@@ -1,3 +1,4 @@
+
 import pygame
 import sys
 import time
@@ -14,7 +15,7 @@ pygame.init()
 
 
 screen = pygame.display.set_mode((700, 600))
-pygame.display.set_caption("20202068 SHIYAN")
+pygame.display.set_caption("Greedy Snake Game")
 
 
 background_image = pygame.image.load("grass.jpg")
@@ -28,7 +29,7 @@ pygame.mixer.music.play(-1)
 eat_sound = pygame.mixer.Sound("eat.mp3")
 
 # 게임 영역 만들기
-arr = [([0] * 61) for i in range(71)]  # 创建一个二维数组
+arr = [([0] * 61) for i in range(71)]  
 
 # 뱀의 초기 위치와 길이
 x = 10
@@ -61,10 +62,17 @@ while True:
     if state == STATE_START:
         # 시작 인터페이스
         screen.blit(background_surface, (0, 0))
-        font = pygame.font.Font(None, 36)
-        text = font.render("Snake Game", True, color_white)
-        text_rect = text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
+        font = pygame.font.Font(None, 72)
+        text = font.render("Greedy Snake Game", True, color_white)
+        text_rect = text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2 - 50))
         screen.blit(text, text_rect)
+
+        # 게임 제목 "Greedy Snake Game" 추가
+        game_title_font = pygame.font.Font(None, 30)
+        game_title_text = game_title_font.render("Press space to start the game", True, color_white)
+        game_title_rect = game_title_text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
+        screen.blit(game_title_text, game_title_rect)
+
         pygame.display.flip()
 
         # 스페이스바를 눌러 게임을 시작하다
@@ -103,18 +111,19 @@ while True:
             game_over = True
 
         if game_over:
-            font = pygame.font.Font(None, 36)
+            font = pygame.font.Font(None, 70)
             text = font.render("Game Over", True, color_red)
             text_rect = text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
             screen.blit(text, text_rect)
 
             # 득점 보이기
-            score_text = font.render(f"Score: {score}", True, color_black)
+            score_font = pygame.font.Font(None, 30)
+            score_text = score_font.render(f"Score: {score}", True, color_black)
             score_rect = score_text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2 + 40))
             screen.blit(score_text, score_rect)
 
             pygame.display.flip()
-            time.sleep(10)
+            time.sleep(2)
             sys.exit()
 
         # 뱀 위치 정보 업데이트
