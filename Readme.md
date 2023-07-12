@@ -1,4 +1,4 @@
-I want to make a pygame about a snake.The object of the game is to eat as much
+My game name is Greedy Snake Game.The object of the game is to eat as much
 food as possible by controlling a snake's movements and trying to avoid collisions
 with itself or walls.The game is mainly divided into snakes, food, and game scenes. Realize snake
 movement, food generation, collision detection and so on.
